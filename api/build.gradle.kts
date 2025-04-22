@@ -23,22 +23,17 @@ tasks {
         )
     }
 }
-/*
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             repositories {
                 maven {
+                    name = "skyblocksquad"
+                    url = uri("https://repo.skyblocksquad.de/repo")
                     credentials(PasswordCredentials::class)
-                    val central = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-                    val snapshots = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-
-                    if (project.version.toString().endsWith("SNAPSHOT")) {
-                        name = "SonatypeSnapshots"
-                        setUrl(snapshots)
-                    } else {
-                        name = "OSSRH"
-                        setUrl(central)
+                    authentication {
+                        create<BasicAuthentication>("basic")
                     }
                 }
             }
@@ -83,4 +78,4 @@ signing {
     useGpgCmd()
     sign(configurations.archives.get())
     sign(publishing.publications["mavenJava"])
-}*/
+}

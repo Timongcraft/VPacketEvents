@@ -2,7 +2,7 @@ subprojects {
     apply<JavaPlugin>()
     repositories {
         maven("https://repo.papermc.io/repository/maven-public/")
-        maven("https://maven.elytrium.net/repo/")
+        maven("https://repo.skyblocksquad.de/repo/")
     }
     tasks {
         withType<JavaCompile> {
